@@ -38,17 +38,22 @@ An intelligent **Agentic AI Blog Writer** built with **LangGraph**, **LangChain*
 ```text
 Agentic-AI-Blog-Writer/
 │
-├── 1_bwa_basic.ipynb
-├── 2_bwa_improved_prompting.ipynb
-├── 3_bwa_research.ipynb
-├── 4_bwa_research_fine_tuned.ipynb
-├── 5_bwa_image.ipynb
+├── notebooks/
+│   ├── 1_bwa_basic.ipynb
+│   ├── 2_bwa_improved_prompting.ipynb
+│   ├── 3_bwa_research.ipynb
+│   ├── 4_bwa_research_fine_tuned.ipynb
+│   └── 5_bwa_image.ipynb
+│
 ├── bwa_backend.py
 ├── bwa_frontend.py
 ├── requirements.txt
 ├── .env.example
-└── README.md
-```
+├── README.md
+├── .gitignore
+└── assets/
+    ├── demo.png
+    └── architecture.png```
 
 ---
 
