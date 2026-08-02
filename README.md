@@ -65,7 +65,7 @@ assets/workflow.png
 ```
 
 ```markdown
-![LangGraph Workflow](assets/workflow.png)
+![LangGraph Workflow](assets/workflow.PNG)
 ```
 
 ---
