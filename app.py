@@ -639,4 +639,4 @@ if out:
             disabled=True,
         )
 else:
-    st.info("💡 Enter your blog focus topic in the sidebar and press **Launch Generator** to start.")
+    st.info("💡 Enter your blog focus topic in the sidebar and press **Launch Generator** to start.")    
