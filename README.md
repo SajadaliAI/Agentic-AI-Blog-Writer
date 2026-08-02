@@ -1,71 +1,127 @@
 # ✍️ Agentic AI Blog Writer
 
-An intelligent **Agentic AI Blog Writer** built with **LangGraph, LangChain, Google Gemini, FastAPI, and Streamlit** that automatically researches a topic, plans content, writes SEO-friendly blog posts, reviews quality, and generates a polished final article using multiple AI agents.
+> An intelligent multi-agent blog generation system powered by **LangGraph**, **LangChain**, **Google Gemini**, **FastAPI**, and **Streamlit**.
+
+Automatically researches a topic, plans the article, generates high-quality content, reviews the output, and produces a polished blog post using an Agentic AI workflow.
 
 ---
 
 ## 🚀 Features
 
-- 🤖 Multi-Agent workflow using LangGraph
-- 🔍 AI-powered topic research
-- 📝 Automatic blog outline generation
-- ✨ SEO-friendly blog writing
-- ✅ Content review and improvement
-- 📚 Reference collection
-- 💾 State management with LangGraph
-- ⚡ FastAPI backend
-- 🎨 Interactive Streamlit interface
-- 🔄 Real-time agent execution
-- 📄 Markdown blog generation
-- 🧠 Google Gemini LLM integration
+- 🤖 Multi-Agent Architecture using LangGraph
+- 🧠 Google Gemini LLM Integration
+- 🔀 Intelligent Router Node
+- 🔍 Automated Topic Research
+- 🎯 Orchestrator-Worker Pattern
+- 📝 High-Quality Blog Generation
+- ✅ AI-Based Review & Refinement
+- ⚡ FastAPI Backend
+- 🎨 Streamlit User Interface
+- 💾 Persistent Workflow State
+- 📄 Markdown Blog Output
+- 🔄 Modular & Scalable Design
 
 ---
 
-# 🏗️ Architecture
+# 🏗️ Agent Workflow
 
-```
+```mermaid
+flowchart TD
 
-             User Topic
-                  │
-                  ▼
-        Research Agent
-                  │
-                  ▼
-         Planning Agent
-                  │
-                  ▼
-          Writer Agent
-                  │
-                  ▼
-          Review Agent
-                  │
-                  ▼
-        Final Blog Output
+    A([Start])
+
+    B[Router]
+
+    C[Research Agent]
+
+    D[Orchestrator]
+
+    E[Worker Agent]
+
+    F[Reducer]
+
+    G([End])
+
+    A --> B
+
+    B -->|Need Research| C
+    B -->|Skip Research| D
+
+    C --> D
+
+    D --> E
+
+    E --> F
+
+    F --> G
 ```
 
 ---
 
-# 🛠 Tech Stack
+# 📌 LangGraph Workflow
 
-### AI Framework
+```text
+assets/workflow.png
+```
+
+```markdown
+![LangGraph Workflow](assets/workflow.png)
+```
+
+---
+
+# 🏛️ System Architecture
+
+```
+                User Topic
+                     │
+                     ▼
+               FastAPI Backend
+                     │
+                     ▼
+                LangGraph Graph
+                     │
+     ┌───────────────┼───────────────┐
+     │               │               │
+     ▼               ▼               ▼
+  Router        Research       Orchestrator
+                                      │
+                                      ▼
+                                 Worker Agent
+                                      │
+                                      ▼
+                                   Reducer
+                                      │
+                                      ▼
+                                Final Blog Post
+                                      │
+                                      ▼
+                               Streamlit Frontend
+```
+
+---
+
+# 🛠️ Tech Stack
+
+## AI Framework
 
 - LangGraph
 - LangChain
 
-### LLM
+## LLM
 
 - Google Gemini
 
-### Backend
+## Backend
 
 - FastAPI
 - Uvicorn
 
-### Frontend
+## Frontend
 
 - Streamlit
 
-### Programming Language
+## Language
 
 - Python 3.11+
 
@@ -82,12 +138,16 @@ Agentic-AI-Blog-Writer/
 │   ├── 3_bwa_research.ipynb
 │   ├── 4_bwa_research_fine_tuned.ipynb
 │   └── 5_bwa_image.ipynb
+│
+├── assets/
+│   └── workflow.png
+│
 ├── app.py
 ├── bwa_backend.py
 ├── requirements.txt
 ├── README.md
-├── .gitignore
-└── LICENSE
+├── LICENSE
+└── .gitignore
 ```
 
 ---
@@ -100,7 +160,7 @@ Clone the repository
 git clone https://github.com/SajadaliAI/Agentic-AI-Blog-Writer.git
 ```
 
-Go to the project directory
+Move into the project
 
 ```bash
 cd Agentic-AI-Blog-Writer
@@ -122,8 +182,6 @@ or
 ```bash
 python -m venv venv
 ```
-
-Activate
 
 Windows
 
@@ -150,18 +208,18 @@ pip install -r requirements.txt
 Create a `.env` file.
 
 ```env
-GOOGLE_API_KEY=your_google_api_key
+GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY
 ```
 
 ---
 
-# ▶️ Run Backend
+# ▶️ Run the Backend
 
 ```bash
 uvicorn bwa_backend:app --reload
 ```
 
-Backend URL
+Backend
 
 ```
 http://127.0.0.1:8000
@@ -169,7 +227,7 @@ http://127.0.0.1:8000
 
 ---
 
-# ▶️ Run Frontend
+# ▶️ Run the Frontend
 
 ```bash
 streamlit run app.py
@@ -177,47 +235,47 @@ streamlit run app.py
 
 ---
 
-# 🧠 Agent Workflow
+# 🧠 Workflow Explanation
 
-### 1️⃣ Research Agent
+### 1️⃣ Router
 
-- Collects information
-- Finds relevant facts
-- Understands the topic
+Determines whether external research is required before blog generation.
 
-↓
+### 2️⃣ Research Agent
 
-### 2️⃣ Planner Agent
+Collects relevant information and context about the requested topic.
 
-- Creates article outline
-- Organizes sections
-- Plans headings
+### 3️⃣ Orchestrator
 
-↓
+Coordinates the workflow and distributes tasks to worker agents.
 
-### 3️⃣ Writer Agent
+### 4️⃣ Worker Agent
 
-- Writes complete article
-- Generates SEO-friendly content
-- Produces readable paragraphs
+Generates the blog content based on the research and instructions.
 
-↓
+### 5️⃣ Reducer
 
-### 4️⃣ Reviewer Agent
-
-- Reviews grammar
-- Improves clarity
-- Enhances quality
-
-↓
-
-### 5️⃣ Final Output
-
-- Returns polished blog article
+Aggregates and refines the generated content into a coherent final article.
 
 ---
 
-# 📦 Requirements
+# 📸 Demo
+
+Add screenshots or a GIF inside the `assets/` folder.
+
+```text
+assets/demo.png
+```
+
+Example:
+
+```markdown
+![Demo](assets/demo.png)
+```
+
+---
+
+# 📋 Requirements
 
 - Python 3.11+
 - Google Gemini API Key
@@ -228,36 +286,36 @@ streamlit run app.py
 
 ---
 
-# 🎯 Future Improvements
+# 🚀 Future Improvements
 
-- Web Search integration
-- RAG support
-- Image generation
-- AI citations
-- Export to PDF
-- Export to DOCX
-- WordPress publishing
-- Multi-language blogs
-- Memory support
-- Human feedback loop
+- Web Search Integration
+- RAG Support
+- PDF Export
+- DOCX Export
+- WordPress Publishing
+- Multi-language Blog Generation
+- Human Feedback Loop
+- Memory Support
+- Citation Generation
+- Image Generation
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome.
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a new branch
 3. Commit your changes
-4. Push to your branch
+4. Push the branch
 5. Open a Pull Request
 
 ---
 
-# ⭐ Support
+# 📄 License
 
-If you like this project, consider giving it a ⭐ on GitHub.
+This project is licensed under the MIT License.
 
 ---
 
@@ -265,15 +323,12 @@ If you like this project, consider giving it a ⭐ on GitHub.
 
 **Sajad Ali**
 
-- AI Engineer
-- Generative AI Developer
-- Agentic AI Enthusiast
+AI Engineer | Generative AI Developer | Agentic AI Enthusiast
 
-GitHub:
-https://github.com/SajadaliAI
+GitHub: https://github.com/SajadaliAI
 
 ---
 
-# 📄 License
+## ⭐ Support
 
-This project is licensed under the MIT License.
+If you found this project useful, don't forget to **Star ⭐ the repository**.
