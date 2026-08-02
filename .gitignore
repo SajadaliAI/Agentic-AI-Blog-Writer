@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Custom Generated Blog / Output Markdown Files
+*.md
+!README.md
